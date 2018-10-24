@@ -1,18 +1,15 @@
-PROG = bin/teste
-CC = g++
-CPPFLAGS = -O0 -g -W -Wall -pedantic -std=c++14
-OBJS = teste.o ABB.o
-RM = -f *.o
+all:
+	@echo "how to use:\n"
+	@echo "\tmake build\t\t- Compile your program into /bin folder."
+	@echo "\tmake run\t\t- Run compiled executable."
+	@echo "\tmake clean\t\t- Clean compiled files."
 
-$(PROG) : $(OBJS)
-	$(CC)  $(OBJS) -o $(PROG)
-	mv *.o build/
+build: ./src/main.cpp
+	@g++ -Wall -std=c++11 -O0 -g -ggdb -Iinclude/ src/main.cpp -o bin/BinarySearchTree
 
-ABB.o : include/ABB.hpp
-	$(CC) $(CPPFLAGS) -c src/ABB.cpp
-
-teste.o : include/ABB.hpp
-	$(CC) $(CPPFLAGS) -c src/teste.cpp
+run: ./bin/main
+	@./bin/BinarySearchTree
 
 clean:
-	rm -f $(PROG) build/*.o
+	@rm -f bin/BinarySearchTree
+
