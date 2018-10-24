@@ -6,69 +6,65 @@ using namespace std;
 typedef int tipo;
 
 struct Node {
-    public:
+	public:
 
-        // Nó pai
-        Node* pai;
+	// Nó pai
+	Node* pai;
 
-        // Nó à esquerda
-        Node* esq;
+	// Nó à esquerda
+	Node* esq;
 
-        // Nó à direita
-        Node* dir;
+	// Nó à direita
+	Node* dir;
 
-        // Qntd de nós na subárvore esquerda
-        unsigned int esq_cnt;
+	// Qntd de nós na subárvore esquerda
+	unsigned int esq_cnt;
 
-        // Qntd de nós na subárvore direita
-        unsigned int dir_cnt;
+	// Qntd de nós na subárvore direita
+	unsigned int dir_cnt;
 
-        // Valor armazenado no nó
-        tipo dado;
+	// Valor armazenado no nó
+	tipo dado;
 
-        // Nível
-        unsigned int nivel;
+	// Nível
+	unsigned int nivel;
 
-    public:
+	public:
 
-        Node(tipo valor = tipo(), int nivel = 0, Node* pai = nullptr,
-            Node* esq = nullptr, Node* dir = nullptr);
+	Node(tipo valor = tipo(), int nivel = 0, Node* pai = nullptr,
+	    Node* esq = nullptr, Node* dir = nullptr);
 
 };
 
 
 class ABB {
     private:
+	// Nó raiz
+	Node* raiz;
 
-        // Nó raiz
-        Node* raiz;
+	// Qntd de nós na árvore
+	unsigned int size;
 
-        // Qntd de nós na árvore
-        unsigned int size;
+	// Altura da árvore
+	unsigned int height;
 
-        // Altura da árvore
-        unsigned int height;
+
+	bool inserir(Node* node, const tipo valor);
+	bool remover(Node* node, const tipo valor);
 
     public:
 
-        ABB(Node* raiz = nullptr);
+	int getSize();
+	int getHeight();
+	Node* getRaiz();
 
-        ~ABB();
+	ABB(Node* raiz = nullptr);
+	~ABB();
 
-        void destruir(Node* node);
-
-        Node* getRaiz();
-
-        int getSize();
-
-        int getHeight();
-
-        Node* busca(const tipo valor);
-
-        bool insercao(Node* node, const tipo valor);
-
-        bool insercao(const tipo valor);
-
+	void destruir(Node* node);
+	Node* busca(const tipo valor);
+	bool inserir(const tipo valor);
+	bool remover(const tipo valor);
 };
 
 
