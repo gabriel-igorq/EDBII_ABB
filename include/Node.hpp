@@ -6,14 +6,16 @@ typedef int Type;
 struct Node {
 	public:
 		Node(
-			Type value,
-			int nivel = 0,
-			Node* father = nullptr,
+			Type key,
+			unsigned int level = 0,
+			Node* faher = nullptr,
 			Node* left_child = nullptr,
 			Node* right_child = nullptr
 		);
 
-		Type data;
+		Type key;
+
+		unsigned int level;
 
 		Node* father;
 		Node* left_child;
@@ -21,7 +23,6 @@ struct Node {
 
 		unsigned int left_subtrees_count;
 		unsigned int right_subtrees_count;
-		unsigned int level;
 };
 
 #include "../src/Node.cpp"

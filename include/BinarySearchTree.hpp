@@ -14,12 +14,14 @@ class BinarySearchTree {
 	unsigned int height;
 
 	bool insert(Node* node, const Type value);
-	bool remove(Node* node, const Type value);
+	Node* remove(const Type value, Node* node);
+	Node* minValue(Node* root);
 
     public:
 
 	BinarySearchTree(Node* root = nullptr);
 	~BinarySearchTree();
+
 
 	Node* getRoot();
 
