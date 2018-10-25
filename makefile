@@ -7,7 +7,7 @@ all:
 build: ./src/main.cpp
 	@g++ -Wall -std=c++11 -O0 -g -ggdb -Iinclude/ src/main.cpp -o bin/BinarySearchTree
 
-run: ./bin/main
+run: ./bin/BinarySearchTree
 	@./bin/BinarySearchTree
 
 clean:
