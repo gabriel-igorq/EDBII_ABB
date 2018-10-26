@@ -2,6 +2,8 @@
 #define BINARY_SEARCH_TREE_HPP
 
 #include "Node.hpp"
+#include <string>
+#include <queue>
 
 typedef int Type;
 
@@ -32,6 +34,7 @@ class BinarySearchTree {
 	Node* search(const Type value);
 	bool insert(const Type value);
 	bool remove(const Type value);
+	std::string toString();
 };
 
 #include "../src/BinarySearchTree.cpp"

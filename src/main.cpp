@@ -47,6 +47,9 @@ int main() {
 	if(tmp->key == 10) {
 		std::cout << "Busca funcionando!" << std::endl;    	
 	}
+
+	std::cout << tree.toString() << endl;
+	
 	
 	// Testando remoção de elemento existente
 	if ( tree.remove(10) )
@@ -54,11 +57,15 @@ int main() {
 	else
 		std::cout << "Remoção de elemento existente falhou!" << std::endl;
 
+	
 	// Testando remoção de elemento não existente
 	if ( tree.remove(10) )
 		std::cout << "Remoção de elemento não existente funcionando!" << std::endl;
 	else
 		std::cout << "Remoção de elemento não existente falhou!" << std::endl;
+	
+	std::cout << tree.toString() << endl;
+
 
 	return 0;
 }

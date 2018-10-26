@@ -1,3 +1,7 @@
+#include "../include/BinarySearchTree.hpp"
+
+using namespace std;
+
 BinarySearchTree::BinarySearchTree(Node* root){
 	this->root = root;
 	size = 0;
@@ -142,4 +146,25 @@ int BinarySearchTree::getSize() {
 
 int BinarySearchTree::getHeight() { 
     return height; 
+}
+
+
+string BinarySearchTree::toString(){
+    string keys;
+    queue<Node*> queue;
+    Node* node = root;
+    
+    queue.push(node);
+    while (!queue.empty()) {
+        node = queue.front();
+        queue.pop();
+        keys += to_string(node->key) + " ";
+        if (node->left_child != nullptr) {
+            queue.push(node->left_child);
+        }
+        if (node->right_child != nullptr) {
+            queue.push(node->right_child);
+        }
+    }
+    return keys;
 }
