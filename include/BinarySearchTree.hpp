@@ -34,6 +34,10 @@ class BinarySearchTree {
 	Node* search(const Type value);
 	bool insert(const Type value);
 	bool remove(const Type value);
+
+	int enesimo(const int n);
+	int position(const Type key);
+	int median();
 	std::string toString();
 };
 

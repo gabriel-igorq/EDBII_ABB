@@ -116,15 +116,18 @@ Node* BinarySearchTree::remove(const Type key, Node* root) {
     }
     else {
         if (root->left_child == nullptr && root->right_child == nullptr) {
+        	size--;
             delete(root);
         }
         else if (root->left_child == nullptr) {
             Node* aux = root->right_child;
+            size--;
             delete(root);
             return aux;
         }
         else if (root->right_child == nullptr) {
             Node* aux = root->left_child;
+            size--;
             delete(root);
             return aux;
         }
@@ -146,6 +149,54 @@ int BinarySearchTree::getSize() {
 
 int BinarySearchTree::getHeight() { 
     return height; 
+}
+
+int BinarySearchTree::enesimo(const int n) {
+    int tmp = 0; //Qtd de nós a esquerda do nó atual + ele mesmo
+    int acc = 0;
+    Node* current = root;
+    while (current != nullptr) {
+        tmp = current->left_subtrees_count + 1;
+        // Se tmp == valor, então retorna raiz
+        if (acc + tmp == n) {
+            return current->key;
+        }
+        // Se tmp < valor, então está do lado direito
+        if (acc + tmp < n) {
+            acc += tmp;
+            current = current->right_child;
+        } else { 
+            current = current->left_child;
+        }
+    }
+    return false;
+}
+
+int BinarySearchTree::position(const Type key) {
+    int tmp = 0; // Qtd de nós a esquerda do nó atual + ele mesmo
+    int acc = 0; // Acumulador
+    Node* current = root;
+    while (current != nullptr) {
+        tmp = current->left_subtrees_count + 1;
+        if (current->key == key) {
+            return tmp + acc;
+        }
+        if (current->key < key) {
+            acc += tmp;
+            current = current->right_child;
+        } else { 
+            current = current->left_child;
+        }
+    }
+    return false;
+}
+
+int BinarySearchTree::median() {
+    if (size % 2 == 0) {
+        return enesimo(size / 2);
+    } else {
+        return enesimo((size / 2) + 1);
+    }
 }
 
 

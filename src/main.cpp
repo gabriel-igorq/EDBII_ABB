@@ -42,6 +42,13 @@ int main() {
 		std::cout << "12 inserido!" << std::endl;	
 	}
 
+	//Testando inserção em árvore contendo um elemento
+	tree.insert(5);
+	size = tree.getSize();
+	if(size == 5) {
+		std::cout << "5 inserido!" << std::endl;	
+	}
+
 	//Testando busca
 	Node* tmp = tree.search(10);
 	if(tmp->key == 10) {
@@ -49,6 +56,7 @@ int main() {
 	}
 
 	std::cout << tree.toString() << endl;
+	
 	
 	
 	// Testando remoção de elemento existente
@@ -64,7 +72,27 @@ int main() {
 	else
 		std::cout << "Remoção de elemento não existente falhou!" << std::endl;
 	
+
 	std::cout << tree.toString() << endl;
+
+	std::cout << "-----------ENÉSIMO-----------" << endl;
+	std::cout << tree.enesimo(1) << endl;
+	std::cout << tree.enesimo(2) << endl;
+	std::cout << tree.enesimo(3) << endl;
+	std::cout << tree.enesimo(4) << endl;
+	std::cout << tree.enesimo(5) << endl;
+	std::cout << tree.enesimo(6) << endl;
+
+	std::cout << "-----------POSITION-----------" << endl;
+	std::cout << tree.position(8) << endl;
+	std::cout << tree.position(4) << endl;
+	std::cout << tree.position(5) << endl;
+	std::cout << tree.position(10) << endl;
+	std::cout << tree.position(12) << endl;
+	std::cout << tree.position(15) << endl;
+
+	std::cout << "-----------MEDIAN-----------" << endl;
+	std::cout << tree.median() << endl;
 
 
 	return 0;
