@@ -4,6 +4,7 @@
 #include "Node.hpp"
 #include <string>
 #include <queue>
+#include <cmath>
 
 typedef int Type;
 
@@ -37,6 +38,8 @@ class BinarySearchTree {
 	int enesimo(const int n);
 	int position(const Type key);
 	int median();
+	bool isFull();
+	bool isComplete();
 	std::string toString();
 };
 

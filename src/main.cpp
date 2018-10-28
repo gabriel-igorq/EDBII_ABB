@@ -10,44 +10,15 @@ int main() {
 
 	//Testando construtor
 	Node* root = tree.getRoot();
-	if(root == nullptr) {
-		std::cout << "Construtor OK!" << std::endl;
-	}
-
-	//Testando inserção
+	
 	tree.insert(8);
-	int size = tree.getSize();
-	if(size == 1) {
-		std::cout << "8 inserido!" << std::endl;	
-	}
-
-	//Testando inserção em árvore contendo um elemento
 	tree.insert(4);
-	size = tree.getSize();
-	if(size == 2) {
-		std::cout << "4 inserido!" << std::endl;	
-	}
-
-	//Testando inserção em árvore contendo um elemento
 	tree.insert(10);
-	size = tree.getSize();
-	if(size == 3) {
-		std::cout << "10 inserido!" << std::endl;    	
-	}
-
-	//Testando inserção em árvore contendo um elemento
 	tree.insert(12);
-	size = tree.getSize();
-	if(size == 4) {
-		std::cout << "12 inserido!" << std::endl;	
-	}
-
-	//Testando inserção em árvore contendo um elemento
 	tree.insert(5);
-	size = tree.getSize();
-	if(size == 5) {
-		std::cout << "5 inserido!" << std::endl;	
-	}
+	tree.insert(14);
+
+	std::cout << tree.toString() << endl;
 
 	//Testando busca
 	Node* tmp = tree.search(10);
@@ -55,12 +26,15 @@ int main() {
 		std::cout << "Busca funcionando!" << std::endl;    	
 	}
 
+	std::cout << "Cheia? " << tree.isFull() << endl;
+	std::cout << "Completa? " << tree.isComplete() << endl;	
+	
+	tree.remove(8);
 	std::cout << tree.toString() << endl;
 	
 	
-	
 	// Testando remoção de elemento existente
-	if ( tree.remove(10) )
+	/*if ( tree.remove(10) )
 		std::cout << "Remoção de elemento existente funcionando!" << std::endl;
 	else
 		std::cout << "Remoção de elemento existente falhou!" << std::endl;
@@ -71,8 +45,10 @@ int main() {
 		std::cout << "Remoção de elemento não existente funcionando!" << std::endl;
 	else
 		std::cout << "Remoção de elemento não existente falhou!" << std::endl;
-	
-
+	*/
+/*
+	std::cout << tree.toString() << endl;
+	tree.remove(8);
 	std::cout << tree.toString() << endl;
 
 	std::cout << "-----------ENÉSIMO-----------" << endl;
@@ -94,6 +70,6 @@ int main() {
 	std::cout << "-----------MEDIAN-----------" << endl;
 	std::cout << tree.median() << endl;
 
-
+*/
 	return 0;
 }
