@@ -263,6 +263,68 @@ int BinarySearchTree::median() {
     }
 }
 
+bool BinarySearchTree::isFull(){
+	return size == pow(2,getHeight()) - 1;
+}
+
+bool BinarySearchTree::isComplete(){
+
+	if(isFull()){
+		return true;
+	}
+
+	if(root == nullptr){
+		return false;
+	}
+
+	// Conta os nós lidos em cada nível
+	int cont = 0;
+	// Armazena a quantidade máxima de nós por nível
+	int level = 1;
+	// Indica se está no penúltimo nível
+    bool penultimate = false;
+    // Indica se está no último nível
+    bool last = false;
+
+    queue<Node*> queue;
+    Node* actual = root;
+    queue.push(actual);
+
+    while (!queue.empty()) {
+    	cont++;
+        Node* actual = queue.front();
+        queue.pop();
+
+        if(actual->left_child != nullptr or actual->right_child != nullptr){
+        	if(last){
+        		return false;
+        	}
+        }
+
+        if(actual->right_child != nullptr){
+        	queue.push(actual->right_child);
+        }
+
+        if(actual->left_child != nullptr){
+        	queue.push(actual->left_child);
+        }
+
+        if(actual->left_child == nullptr or actual->right_child == nullptr){
+        	penultimate = true;
+        }
+
+        //Verifica se todos os nós daquele nível foram lidos
+		if(cont == level){
+			cont = 0;
+			level = level*2;
+			if(penultimate){
+				last = true;
+			}
+		}
+    }
+
+	return true;   
+}
 
 string BinarySearchTree::toString(){
     string keys;
