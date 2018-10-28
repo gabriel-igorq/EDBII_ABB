@@ -16,7 +16,7 @@ class BinarySearchTree {
 	unsigned int height;
 
 	bool insert(Node* node, const Type key);
-	bool remove(const Type key, Node*& node);
+	bool remove(const Type key, Node* node);
 	Node* minValue(Node* root);
 
     public:

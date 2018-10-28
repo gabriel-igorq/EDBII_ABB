@@ -103,63 +103,104 @@ bool BinarySearchTree::remove(const Type key) {
     return remove(key, this->root);
 }
 
-bool BinarySearchTree::remove(const Type key, Node *&root) {
-    bool removed;
-
-    if (root == nullptr)
-        return false;
-
-    if (key < root->key) {
-        bool removed = remove(key, root->left_child);
-
-        if (removed)
-            root->left_subtrees_count--;
-
-        return removed;
-    }
-    else if (key > root->key) {
-        bool removed = remove(key, root->right_child);
-
-        if (removed)
-            root->right_subtrees_count--;
-
-        return removed;
-    }
-    else {
-        if (root->left_child == nullptr && root->right_child == nullptr) {
-            delete root;
-            root = nullptr;
-            return true;
-        }
-        if (root->left_child == nullptr) {
-            Node *tmp = root;
-            root = root->right_child;
-            delete tmp;
-            return true;
-        }
-        else if (root->right_child == nullptr) {
-            Node *tmp = root;
-            root = root->left_child;
-            delete tmp;
-            return true;
-        }
-
-        Node **minNode = &root->right_child;
-
-        while ((*minNode)->left_child != nullptr) {
-            (*minNode)->left_subtrees_count--;
-            minNode = &(*minNode)->left_child;
-        }
-
-        root->key = (*minNode)->key;
-
-        delete *minNode;
-        *minNode = nullptr;
-
-        removed = true;
-    }
-
-    return removed;
+bool BinarySearchTree::remove(const Type key, Node* node) {
+	bool found = false;
+	Node* predecessor=nullptr;
+	Node* current=node;
+	if(current==nullptr) {
+		 return found;
+	}
+	while(current!=nullptr) {
+		if(current->key==key) {
+			found = true;
+			break;
+		}
+		else {
+			predecessor = current;
+			if(key > (current->key))
+				current=current->right_child;
+			else
+				current=current->left_child;
+		}
+	}
+	if(!found) {
+		return found;
+	}
+	if((current->left_child==nullptr && current->right_child != nullptr) || (current->left_child != nullptr && current->right_child==nullptr)) {
+		if(current->left_child==nullptr && current->right_child != nullptr) {
+			if(predecessor->left_child==current) {
+				predecessor->left_child=current->right_child;
+				delete current;
+				current=nullptr;
+			}
+			else
+			{
+				predecessor->right_child=current->right_child;
+				delete current;
+				current=nullptr;
+			}
+		}
+		else {
+			if(predecessor->left_child==current)
+			{
+				predecessor->left_child=current->left_child;
+				delete current;
+				current=nullptr;
+			}
+			else
+			{
+				predecessor->right_child=current->left_child;
+				delete current;
+				current=nullptr;
+			}
+		}
+		return found;
+	}
+	if(current->left_child==nullptr && current->right_child==nullptr)
+	{
+		if(predecessor->left_child==current)
+			predecessor->left_child=nullptr;
+		else
+			predecessor->right_child=nullptr;
+		delete current;
+		return found;
+	}
+	if(current->left_child != nullptr && current->right_child != nullptr)
+	{
+		Node* check=current->right_child;
+		if((current->left_child==nullptr)&&(current->right_child==nullptr))
+		{
+			current=check;
+			delete check;
+			current->right_child==nullptr;
+		}
+		else
+		{
+			if((current->right_child)->left_child!=nullptr)
+			{
+				Node* leftCurrent;
+				Node* leftCurrentPred;
+				leftCurrentPred=current->right_child;
+				leftCurrent=(current->right_child)->left_child;
+				while(leftCurrent->left_child != nullptr)
+				{
+					leftCurrentPred=leftCurrent;
+					leftCurrent=leftCurrent->left_child;
+				}
+				current->key=leftCurrent->key;
+				delete leftCurrent;
+				leftCurrentPred->left_child==nullptr;
+			}
+			else
+			{
+				Node* temp=current->right_child;
+				current->key=temp->key;
+				current->right_child=temp->right_child;
+				delete temp;
+			}
+		}
+		return found;
+	}
 }
 
 Node* BinarySearchTree::getRoot() { 
