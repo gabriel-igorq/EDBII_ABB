@@ -8,7 +8,7 @@ struct Node {
 		Node(
 			Type key,
 			unsigned int level = 0,
-			Node* faher = nullptr,
+			Node* father = nullptr,
 			Node* left_child = nullptr,
 			Node* right_child = nullptr
 		);

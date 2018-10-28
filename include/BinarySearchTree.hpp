@@ -15,8 +15,8 @@ class BinarySearchTree {
 	unsigned int size;
 	unsigned int height;
 
-	bool insert(Node* node, const Type value);
-	Node* remove(const Type value, Node* node);
+	bool insert(Node* node, const Type key);
+	bool remove(const Type key, Node*& node);
 	Node* minValue(Node* root);
 
     public:
@@ -24,16 +24,15 @@ class BinarySearchTree {
 	BinarySearchTree(Node* root = nullptr);
 	~BinarySearchTree();
 
-
 	Node* getRoot();
 
 	int getSize();
 	int getHeight();
 
 	void destroy(Node* node);
-	Node* search(const Type value);
-	bool insert(const Type value);
-	bool remove(const Type value);
+	Node* search(const Type key);
+	bool insert(const Type key);
+	bool remove(const Type key);
 
 	int enesimo(const int n);
 	int position(const Type key);

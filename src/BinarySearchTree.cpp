@@ -100,43 +100,66 @@ Node* BinarySearchTree::minValue(Node* root) {
 }
 
 bool BinarySearchTree::remove(const Type key) {
-    this->root = remove(key, this->root);
-	return this->root != nullptr;
+    return remove(key, this->root);
 }
 
-Node* BinarySearchTree::remove(const Type key, Node* root) {
+bool BinarySearchTree::remove(const Type key, Node *&root) {
+    bool removed;
+
     if (root == nullptr)
-        return root;
+        return false;
 
     if (key < root->key) {
-        root->left_child = remove(key, root->left_child);
+        bool removed = remove(key, root->left_child);
+
+        if (removed)
+            root->left_subtrees_count--;
+
+        return removed;
     }
     else if (key > root->key) {
-        root->right_child = remove(key, root->right_child);
+        bool removed = remove(key, root->right_child);
+
+        if (removed)
+            root->right_subtrees_count--;
+
+        return removed;
     }
     else {
         if (root->left_child == nullptr && root->right_child == nullptr) {
-        	size--;
-            delete(root);
+            delete root;
+            root = nullptr;
+            return true;
         }
-        else if (root->left_child == nullptr) {
-            Node* aux = root->right_child;
-            size--;
-            delete(root);
-            return aux;
+        if (root->left_child == nullptr) {
+            Node *tmp = root;
+            root = root->right_child;
+            delete tmp;
+            return true;
         }
         else if (root->right_child == nullptr) {
-            Node* aux = root->left_child;
-            size--;
-            delete(root);
-            return aux;
+            Node *tmp = root;
+            root = root->left_child;
+            delete tmp;
+            return true;
         }
-        Node* aux = minValue(root->right_child);
-        root->key = aux->key;
-        root->right_child = remove(aux->key, root->right_child);
+
+        Node **minNode = &root->right_child;
+
+        while ((*minNode)->left_child != nullptr) {
+            (*minNode)->left_subtrees_count--;
+            minNode = &(*minNode)->left_child;
+        }
+
+        root->key = (*minNode)->key;
+
+        delete *minNode;
+        *minNode = nullptr;
+
+        removed = true;
     }
 
-    return root;
+    return removed;
 }
 
 Node* BinarySearchTree::getRoot() { 
