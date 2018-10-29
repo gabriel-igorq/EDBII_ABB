@@ -4,7 +4,7 @@ all:
 	@echo "\tmake clean\t\t- Clean compiled files."
 
 build: ./src/main.cpp
-	@mkdir bin/
+	@mkdir -p bin/
 	@g++ -Wall -std=c++11 -O0 -g -ggdb -Iinclude/ src/main.cpp -o bin/BinarySearchTree
 
 clean:
