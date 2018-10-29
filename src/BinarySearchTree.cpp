@@ -108,7 +108,7 @@ bool BinarySearchTree::remove(const Type key, Node* node) {
 	Node* predecessor=nullptr;
 	Node* current=node;
 	if(current==nullptr) {
-		 return found;
+		 return false;
 	}
 	while(current!=nullptr) {
 		if(current->key==key) {
@@ -124,9 +124,9 @@ bool BinarySearchTree::remove(const Type key, Node* node) {
 		}
 	}
 	if(!found) {
-		return found;
+		return false;
 	}
-	if((current->left_child==nullptr && current->right_child != nullptr) || (current->left_child != nullptr && current->right_child==nullptr)) {
+	else if((current->left_child == nullptr && current->right_child != nullptr) || (current->left_child != nullptr && current->right_child == nullptr)) {
 		if(current->left_child==nullptr && current->right_child != nullptr) {
 			if(predecessor->left_child==current) {
 				predecessor->left_child=current->right_child;
@@ -156,7 +156,7 @@ bool BinarySearchTree::remove(const Type key, Node* node) {
 		}
 		return found;
 	}
-	if(current->left_child==nullptr && current->right_child==nullptr)
+	else if(current->left_child==nullptr && current->right_child==nullptr)
 	{
 		if(predecessor->left_child==current)
 			predecessor->left_child=nullptr;
@@ -165,14 +165,14 @@ bool BinarySearchTree::remove(const Type key, Node* node) {
 		delete current;
 		return found;
 	}
-	if(current->left_child != nullptr && current->right_child != nullptr)
+	else if(current->left_child != nullptr && current->right_child != nullptr)
 	{
 		Node* check=current->right_child;
 		if((current->left_child==nullptr)&&(current->right_child==nullptr))
 		{
 			current=check;
 			delete check;
-			current->right_child==nullptr;
+			current->right_child=nullptr;
 		}
 		else
 		{
@@ -189,7 +189,7 @@ bool BinarySearchTree::remove(const Type key, Node* node) {
 				}
 				current->key=leftCurrent->key;
 				delete leftCurrent;
-				leftCurrentPred->left_child==nullptr;
+				leftCurrentPred->left_child=nullptr;
 			}
 			else
 			{
@@ -200,6 +200,8 @@ bool BinarySearchTree::remove(const Type key, Node* node) {
 			}
 		}
 		return found;
+	} else {
+		return false; 
 	}
 }
 
