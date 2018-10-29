@@ -37,38 +37,57 @@ int main(int argc, char *argv[]) {
 }
 
 void execute_command(string command, BinarySearchTree& tree) {
-	string cmd = command.substr(0,5);
+		string cmd = command.substr(0,5);
 		if ( cmd == "ENESI" ) {
 			string strn = command.substr(8, command.length());
 			int n = std::stoi(strn);
-			std::cout << tree.enesimo(n) << std::endl;
+			std::cout << "Enésimo (" << n << "): "  << tree.enesimo(n) << std::endl;
 		}
 		else if ( cmd == "POSIC" ) {
 			string strkey = command.substr(8, command.length());
 			int key = std::stoi(strkey);
-			std::cout << tree.position(key) << std::endl;
+			std::cout << "Posição (" << key << "): " << tree.position(key) << std::endl;
 		}
 		else if ( cmd == "MEDIA" ) {
-			std::cout << tree.median() << std::endl;
+			std::cout << "Mediana: " << tree.median() << std::endl;
 		}
 		else if ( cmd == "CHEIA" ) {
-			std::cout << tree.isFull() << std::endl;
+			if(tree.isFull()){
+				std::cout << "Árvore cheia" << std::endl;
+			} else {
+				std::cout << "Árvore não é cheia" << std::endl;
+			}
 		}
 		else if ( cmd == "COMPL" ) {
-			std::cout << tree.isComplete() << std::endl;
+			if(tree.isComplete()){
+				std::cout << "Árvore completa" << std::endl;
+			} else {
+				std::cout << "Árvore não é completa" << std::endl;
+			}
 		}
 		else if ( cmd == "IMPRI" ) {
+			std::cout << "-----Árvore-----" << std::endl;
 			std::cout << tree.toString() << std::endl;
+			std::cout << "----------------" << std::endl;
 		}
 		else if ( cmd == "REMOV" ) {
 			string strn = command.substr(7, command.length());
 			int n = std::stoi(strn);
-			std::cout << tree.remove(n) << std::endl;
+			if(tree.remove(n)){
+				std::cout << "Remoção realizada com sucesso" << std::endl;
+			} else {
+				std::cout << "Remoção inválida" << std::endl;
+			}
 		}
 		else if ( cmd == "INSIR" ) {
 			string strn = command.substr(7, command.length());
 			int n = std::stoi(strn);
-			std::cout << tree.insert(n) << std::endl;
+			if(tree.insert(n)){
+				std::cout << "Inserção realizada com sucesso" << std::endl;
+			} else {
+				std::cout << "Inserção inválida" << std::endl;
+			}
+			
 		}
  
 }

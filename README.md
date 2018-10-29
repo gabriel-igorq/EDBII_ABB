@@ -17,11 +17,20 @@ Implementar uma árvore binária de busca(ABB) aumentada para suportar as opera�
 
 1. Clone o repositório abrindo o terminal e digitando: $ git clone https://github.com/gabriel-igorq/EDBII_ABB
 
-2. Entre no diretório digitando: $ cd EDBII_ABB
+2. Entre no diretório digitando: 
+#+BEGIN_SRC sh
+$ cd EDBII_ABB
+#+END_SRC
 
-3. Para compilar digite: $ make build
+3. Para compilar digite: 
+#+BEGIN_SRC sh
+$ make build
+#+END_SRC
 
-4. Para executar digite: $ make run
+4. Para executar digite: 
+#+BEGIN_SRC sh
+$ ./bin/BinarySearchTree entradas comandos
+#+END_SRC
 
 ## Autores
 
