@@ -33,6 +33,7 @@ $ make build
 4. Para executar digite: 
 ```bash
 $ ./bin/BinarySearchTree <nome-do-arquivo> <nome-do-arquivo>
+# ex: ./bin/BinarySearchTree entradas comandos
 ```
 Note que os arquivos de entrada devem estar na pasta [data](./data), e deve ser passado APENAS o nome do arquivo e não o diretório.
 
