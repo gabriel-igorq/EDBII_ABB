@@ -4,6 +4,7 @@
 #include "../include/Node.hpp"
 #include "../include/BinarySearchTree.hpp"
 
+void execute_command(string command);
 
 int main(int argc, char *argv[]) {
 	BinarySearchTree tree;
@@ -29,9 +30,13 @@ int main(int argc, char *argv[]) {
 		string line;
 		while ( std::getline(command_inputs, line) ) {
 
-			std::cout << strtok(line,' ') << std::endl;
+			execute_command(line);
 
 		}
 	}
 	return 0;
+}
+
+void execute_command(string command) {
+			std::cout << command << std::endl;
 }
