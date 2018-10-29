@@ -30,10 +30,11 @@ $ cd EDBII_ABB
 $ make build
 ```
 
-4. Para executar digite: (Note que os arquivos de entrada devem estar na pasta [data](./data), e deve ser passado APENAS o nome do arquivo e não o diretório) 
+4. Para executar digite: 
 ```bash
-$ ./bin/BinarySearchTree <arquivo na pasta data> <arquivo na pasta data>
+$ ./bin/BinarySearchTree <nome-do-arquivoa> <nome-do-arquivo>
 ```
+Note que os arquivos de entrada devem estar na pasta [data](./data), e deve ser passado APENAS o nome do arquivo e não o diretório.
 
 ## Autores
 
