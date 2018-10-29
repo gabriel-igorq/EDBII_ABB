@@ -15,7 +15,10 @@ Implementar uma árvore binária de busca(ABB) aumentada para suportar as opera�
 
 ## Instruções
 
-1. Clone o repositório abrindo o terminal e digitando: $ git clone https://github.com/gabriel-igorq/EDBII_ABB
+1. Clone o repositório abrindo o terminal e digitando: 
+```bash
+$ git clone https://github.com/gabriel-igorq/EDBII_ABB
+```
 
 2. Entre no diretório digitando: 
 ```bash
